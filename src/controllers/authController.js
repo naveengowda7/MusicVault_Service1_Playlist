@@ -43,7 +43,7 @@ const callback = async (req, res) => {
       sameSite: "Strict",
     })
 
-    res.redirect('http://localhost:5173/callback');
+    res.redirect('https://musicvault-frontend.onrender.com/callback');
 
   } catch (error) {
     res.status(500).json({
