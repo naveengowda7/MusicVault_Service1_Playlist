@@ -35,12 +35,15 @@ const callback = async (req, res) => {
 
     res.cookie("access_token", response.data.access_token, {
       httpOnly: true,
-      sameSite: "Strict",
+      sameSite: "None",
+      secure: true,
       maxAge: 24 * 60 * 1000,
     })
+
     res.cookie("refresh_token", response.data.refresh_token, {
       httpOnly: true,
-      sameSite: "Strict",
+      sameSite: "None",
+      secure: true,
     })
 
     res.redirect('https://musicvault-frontend.onrender.com/callback');
