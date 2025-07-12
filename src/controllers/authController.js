@@ -48,6 +48,14 @@ const callback = async (req, res) => {
   }
 }
 
+app.get('/api/test-auth', (req, res) => {
+  if (req.session.user) {
+    res.json({ authenticated: true, user: req.session.user });
+  } else {
+    res.status(401).json({ authenticated: false });
+  }
+});
+
 const logout = (req, res) => {
   res.clearCookie('access_token', {
     httpOnly: true,
