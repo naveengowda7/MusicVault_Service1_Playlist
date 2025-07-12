@@ -33,18 +33,11 @@ const callback = async (req, res) => {
     }
     )
 
-    res.cookie("access_token", response.data.access_token, {
-      httpOnly: true,
-      sameSite: "None",
-      secure: true,
-      maxAge: 24 * 60 * 1000,
-    })
-
-    res.cookie("refresh_token", response.data.refresh_token, {
-      httpOnly: true,
-      sameSite: "None",
-      secure: true,
-    })
+    req.session.user = {
+      id: spotifyUser.id,
+      accessToken: accessToken,
+      refreshToken: refreshToken
+    };
 
     res.redirect('https://musicvault-frontend.onrender.com/callback');
 
